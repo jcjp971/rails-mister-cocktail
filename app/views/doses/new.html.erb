@@ -1,0 +1,42 @@
+<!-- <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur earum beatae illum facere nobis neque quos, praesentium, rem impedit voluptas corporis soluta a harum mollitia, nihil vitae ab veritatis dolorum.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+ -->
+
+ <div id="creation">
+    <div>
+      <%= simple_form_for [@cocktail, @dose] do |f| %>
+        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+        <h2>Quel ingredient souhaitez vous pour <%= @cocktail.name %></h2>
+        <div class="form-inputs">
+          <%= f.input :description %>
+
+          <%= f.association :ingredient, as: :select %>
+        </div>
+        <div class="center">
+          <div class="form-actions btn btn-primary">
+            <%= f.button :submit %>
+          </div>
+          <div>
+            <%= link_to "retour", cocktails_path %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>

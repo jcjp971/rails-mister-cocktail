@@ -1,16 +1,8 @@
-<div id="logo">
-  <%= image_tag "logo.png", alt: "Summer Cocktail", :class => "logo"%>
-</div>
+
 <div class="create">
-  <h1 class="btn btn-primary">Create of Cocktail</h1>
+  <a href="#creation"><h1 class="btn btn-primary" >Create of Cocktail</h1></a>
 
 </div>
-
-
-
-
-
-
 
 
 <div class="container">
@@ -19,12 +11,15 @@
      <% @cocktails.each do |cocktail| %>
       <div class="card">
         <div class="name"><%= cocktail.name %></div>
+
         <div class="infos">
           <% cocktail.doses.each do |dose| %>
-            <p><%= dose.description %></p>
+            <p><%= dose.description %> de <%= dose.ingredient.name %></p>
           <% end %>
         </div>
-        <div class="delete">
+
+        <div class="option">
+          <%= link_to 'add a dose', new_cocktail_dose_path(cocktail) %>
           <%= link_to "delete", cocktail, method: :delete, data: { confirm: 'Are you sure?' }  %>
         </div>
 
@@ -39,8 +34,10 @@
         <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
         <div class="form-inputs">
           <%= f.input :name %>
-          <%= f.input :doses, as: :string %>
-          <%= f.association :ingredients, as: :select %>
+        </div>
+        <div class="form-inputs">
+            <%= f.input :photo %>
+            <%= f.input :photo_cache, as: :hidden %>
         </div>
         <div class="center">
           <div class="form-actions btn btn-primary">
