@@ -9,9 +9,9 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body  style="background-image: url(<%= cl_image_path 'z825baacqjjs8wlwqe49' %>)">
     <div id="logo">
-      <%= image_tag "logo.png", alt: "Summer Cocktail", :class => "logo"%>
+      <%= cl_image_tag 'bucie2ayaar8o8e7ymqq', alt: "Summer Cocktail", :class => "logo"%>
     </div>
 
     <%= yield %>

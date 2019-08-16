@@ -9,20 +9,22 @@
   <div class="cards">
 
      <% @cocktails.each do |cocktail| %>
-      <div class="card">
-        <div class="name"><%= cocktail.name %></div>
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path cocktail.photo %>)">
+        <div class="option">
+          <%= link_to new_cocktail_dose_path(cocktail) do %>
+            <i class="fas fa-plus"></i>
+            <% end %>
+          <%= link_to cocktail, method: :delete, data: { confirm: 'Are you sure?' }  do%>
+            <i class="fas fa-trash"></i>
+            <% end %>
+        </div>
+        <h2 class="name"><%= cocktail.name %></h2>
 
         <div class="infos">
           <% cocktail.doses.each do |dose| %>
             <p><%= dose.description %> de <%= dose.ingredient.name %></p>
           <% end %>
         </div>
-
-        <div class="option">
-          <%= link_to 'add a dose', new_cocktail_dose_path(cocktail) %>
-          <%= link_to "delete", cocktail, method: :delete, data: { confirm: 'Are you sure?' }  %>
-        </div>
-
 
       </div>
     <% end %>

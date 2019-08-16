@@ -23,11 +23,11 @@
     <div>
       <%= simple_form_for [@cocktail, @dose] do |f| %>
         <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-        <h2>Quel ingredient souhaitez vous pour <%= @cocktail.name %></h2>
+        <h2>Witch one do you want ?<%= @cocktail.name %></h2>
         <div class="form-inputs">
+          <%= f.association :ingredient, as: :select %>
           <%= f.input :description %>
 
-          <%= f.association :ingredient, as: :select %>
         </div>
         <div class="center">
           <div class="form-actions btn btn-primary">
